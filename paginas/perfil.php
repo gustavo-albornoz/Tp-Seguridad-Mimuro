@@ -1,0 +1,350 @@
+<?php             
+session_start(); 
+error_reporting(0);
+?>
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="../css/estilo2.css"/>
+	<script type="text/javascript" src="js/codigo.js"/></script>
+	<title>Perfil</title>
+</head>
+<body>
+		<div id="container">
+					<ul class="dropdown"><!--Menu horizontal-->
+						<li><a href="home.php" class="dir">Home</a></li>
+						<li><a href="perfil.php" class="dir">Mi Perfil</a></li>
+						<li><a href="conf.php" class="dir">Configuraci&oacute;n</a></li>
+						<?php
+              			if($_SESSION['admin']==1){
+          				?>
+              			<li><a href="admin.php" class="dir">Admin</a></li>
+          				<?php   }
+					    ?>
+					</ul>
+					<?php 
+					$activo=$_SESSION['activo'];
+					?>
+
+					<div class="bienvenidos">
+						Hola <?php 
+									if ($_SESSION!=NULL) {
+									$idusr=$_SESSION['idusr'];
+									$nombresesion=$_SESSION['nom'];
+									echo " ";
+									echo "<a href='perfil.php?id='.$idusr.''>$nombresesion</a>";	
+									}
+
+							?>!
+					</div>
+
+					<div id="perfilmostrar">
+						
+							<div class="imagen"><img src="../img/perfildefault.png." width="120px" height="120px" alt=""/></a></div>
+							<div id="infoperfil"><p>
+								<?php 
+								$perf=$_GET['p'];
+								if ($perf!=NULL) {
+												$con="CALL perfil('$perf')"; 
+												require ("mysql.php");
+												while($resultados=mysqli_fetch_array($consulta)){
+													echo '<div class="aviso">'.$resultados['nombre'].' ';
+													echo $resultados['apellido'].'</br></div>';
+													echo '<div class="aviso">'.$resultados['mail'].'</br></div>';
+													echo '<div class="aviso">'.$resultados['descripcion'].'</div>';
+												}
+									   		}
+								else {	   
+										if ($activo!=NULL) {
+												$Nombre=$_SESSION['nom'];
+												$Apellido=$_SESSION['ape'];
+												$Mail=$_SESSION['mail'];
+												$Descripcion=$_SESSION['des'];
+												echo '<div class="aviso">'.$Nombre.' ';
+												echo ''.$Apellido.'</br></div>';
+												echo '<div class="aviso">'.$Mail.'</br></div>';
+												echo'<div class="aviso">'.$Descripcion.'</div>';
+												}
+										else {				
+												echo "<div class='aviso'>Usuario An&oacute;nimo</div>";
+								          		}								   		
+								     }	     		
+								?></p></div>
+								
+								<?php if($activo!=NULL&&$perf!=NULL){ 
+													if($perf==$_SESSION['idusr']){
+								?>
+								<div><form action="conf.php"><input type="submit" id="botonperfil" name="botonperfil" value="Editar mi perfil"></form></div>
+								<div><form action="logout.php"><input type="submit" id="botonperfil2" name="botonperfil2" value="Cerrar Sesion"></form></div>
+								<?php
+																				} else {
+								?>
+								<form method="post" action="seguidores.php" name="seguidores	"> <!-- nuevo!-->
+								<input type="hidden" id="receptor" name="receptor" value="<?php echo $perf;?>"/><!-- nuevo!-->
+								<div><input type="submit" id="botonperfil" name="botonperfil" value="Seguir"></div></form>
+													<?php 								}		
+									  					}	 else { if($activo!=NULL){
+								?>  <div><form action="conf.php"><input type="submit" id="botonperfil" name="botonperfil" value="Editar mi perfil"></form></div>
+								<div><form action="logout.php"><input type="submit" id="botonperfil2" name="botonperfil2" value="Cerrar Sesion"></form></div>
+								<?php												 } else {
+								?> <div></div>
+								<?php 														}
+																	}
+								?>
+						
+					</div>
+
+
+					<div class="lineavertical"></div>
+
+					<div id="mensajes">
+						<div id="mensajestitulo">Mensajes</div>
+					
+					<?php //casos de Privacidad
+						$con="CALL perfil($perf)";
+						require ("mysql.php");
+						$g=mysqli_fetch_array($consulta);
+						$privacidad=$g['privacidad'];
+						$con="CALL selseg($perf)";
+						//recorrer los seguidores y determinar si son seguidos por el perfil que estan visitando
+						while ($h=mysqli_fetch_array($consulta)) {
+							if ($_SESSION['idusr']==$h['idseguidor']) {
+								$seguidores=1;
+							}
+						}
+						//el usuario debe estar registrado 
+						if ($activo!=NULL) {
+							//si el usuario esta viendo un perfil ajeno
+							if($perf!=NULL){
+										//comienzo switch
+								switch ($privacidad) {
+									//usuarios registrados que visitan un perfil con privacidad 1
+									case '1': 
+									//solo usuarios que el perfil sigue pueden leer y escribir
+									if ($seguidores!=NULL){
+
+										$con="CALL mensajes('$perf')"; 
+										require ("mysql.php");
+										?>			
+											<div class="mensajesrecibidos">		
+										<?php	
+										while($f=mysqli_fetch_array($consulta)){
+																				echo '<div class="aviso"></br>'.$f['nombre'].' ';
+																				echo $f['apellido'].'</br></div>';
+																				echo '<div class="aviso">'.$f['mensaje'].'</div>';													
+																				}
+										mysqli_close($conexion);
+													
+										?> 
+										</div> 
+										<div class="escribir">		  
+												<form method="post" action="envio-msj.php" name="busqueda">
+												<textarea id="mensaje" name="mensaje" rows="3" cols="65" maxlength="300"></textarea>
+												<input type="hidden" id="receptor" name="receptor" value="<?php echo $perf;?>"/>
+												<input type="submit" id="botonsend" name="enviar" value="Enviar"/></form>							
+										</div>
+
+									<?php }
+
+										 else echo '<div class="aviso">
+										 			</br>La privacidad de este usuario no permite que envies ni que leas sus msjs</div>';
+						
+										
+										break;
+
+									
+									//usuarios registrados que visitan un perfil con privacidad 2	
+									case '2':
+									//solo usuarios que el perfil sigue pueden leer y escribir 
+									if ($seguidores!=NULL){
+
+										$con="CALL mensajes('$perf')"; 
+										require ("mysql.php");
+										?>			
+											<div class="mensajesrecibidos">		
+										<?php	
+										while($f=mysqli_fetch_array($consulta)){
+																				echo '<div class="aviso"></br>'.$f['nombre'].' ';
+																				echo $f['apellido'].'</br></div>';
+																				echo '<div class="aviso">'.$f['mensaje'].'</div>';													
+																				}
+										mysqli_close($conexion);
+													
+										?> 
+										</div> 
+										<div class="escribir">		  
+												<form method="post" action="envio-msj.php" name="busqueda">
+												<textarea id="mensaje" name="mensaje" rows="3" cols="65" maxlength="300"></textarea>
+												<input type="hidden" id="receptor" name="receptor" value="<?php echo $perf;?>"/>
+												<input type="submit" id="botonsend" name="enviar" value="Enviar"/></form>							
+										</div>
+
+									<?php }
+									//registrados que no son seguidos por el perfil que esta visitando
+									else {
+										$con="CALL mensajes('$perf')"; 
+										require ("mysql.php");
+										?>			
+											<div class="mensajesrecibidos">		
+										<?php	
+										while($f=mysqli_fetch_array($consulta)){
+																				echo '<div class="aviso"></br>'.$f['nombre'].' ';
+																				echo $f['apellido'].'</br></div>';
+																				echo '<div class="aviso">'.$f['mensaje'].'</div>';													
+																				}
+										mysqli_close($conexion);
+													
+										?> 
+										</div>
+										<?php
+										}
+
+										break;
+
+										//default casos 3,4 y 5 de privacidad en el perfil que se visita 
+										default:
+										//usuarios registrados pueden leer y escribir contenido
+										$con="CALL mensajes('$perf')"; 
+										require ("mysql.php");
+										?>			
+											<div class="mensajesrecibidos">		
+										<?php	
+										while($f=mysqli_fetch_array($consulta)){
+																				echo '<div class="aviso"></br>'.$f['nombre'].' ';
+																				echo $f['apellido'].'</br></div>';
+																				echo '<div class="aviso">'.$f['mensaje'].'</div>';													
+																				}
+										mysqli_close($conexion);
+													
+										?> 
+										</div> 
+										<div class="escribir">		  
+												<form method="post" action="envio-msj.php" name="busqueda">
+												<textarea id="mensaje" name="mensaje" rows="3" cols="65" maxlength="300"></textarea>
+												<input type="hidden" id="receptor" name="receptor" value="<?php echo $perf;?>"/>
+												<input type="submit" id="botonsend" name="enviar" value="Enviar"/></form>							
+										</div>
+
+										<?php
+										break;
+
+								}//fin de Switch usuarios registrados
+								
+
+											} 
+						
+							else { //usuario registrado y con perfil propio
+									$con="CALL mensajes('$idusr')"; 
+										require ("mysql.php");
+										?>			
+											<div class="mensajesrecibidos">		
+										<?php	
+										while($f=mysqli_fetch_array($consulta)){
+																				echo '<div class="aviso"></br>'.$f['nombre'].' ';
+																				echo $f['apellido'].'</br></div>';
+																				echo '<div class="aviso">'.$f['mensaje'].'</div>';													
+																				}
+										mysqli_close($conexion);
+													
+										?> 
+										</div> 
+										<div class="escribir">		  
+												<form method="post" action="envio-msj.php" name="busqueda">
+												<textarea id="mensaje" name="mensaje" rows="3" cols="65" maxlength="300"></textarea>
+												<input type="hidden" id="receptor" name="receptor" value="<?php echo $id;?>"/>
+												<input type="submit" id="botonsend" name="enviar" value="Enviar"/></form>							
+										</div>
+								<?php
+								}	
+											}
+						//usuario anonimo sin muro
+						else	{	
+							//usuario anonimo que mira el perfil de otro usuario
+							if($perf!=NULL){//switch para anonimos que visitan el perfil de otro
+										switch ($privacidad) {
+											case '3':
+												echo "<div class='aviso'><br/>Solo los usuarios registrados pueden enviar o recibir mensajes a este perfil!<br/>
+												Registrate o inicia sesion!<br/><br/></div>";
+												echo "<form action='../index.php'>
+    											<input type=submit value='Volver al Inicio' name='logon' id='botonback'>
+												</form>";
+												break;
+											case '1':
+												echo "<div class='aviso'><br/>Solo los usuarios registrados pueden enviar o recibir mensajes a este perfil!<br/>
+												Registrate o inicia sesion!<br/><br/></div>";
+												echo "<form action='../index.php'>
+    											<input type=submit value='Volver al Inicio' name='logon' id='botonback'>
+												</form>";
+											break;
+											case '4':
+												$con="CALL mensajes('$perf')"; 
+												require ("mysql.php");
+										?>			
+										<div class="mensajesrecibidos">		
+										<?php	
+										while($f=mysqli_fetch_array($consulta)){
+																				echo '<div class="aviso"></br>'.$f['nombre'].' ';
+																				echo $f['apellido'].'</br></div>';
+																				echo '<div class="aviso">'.$f['mensaje'].'</div>';													
+																				}
+										mysqli_close($conexion);
+													
+										?> 
+										</div> 
+										<?php
+											break;
+											case '5':
+													$con="CALL mensajes('$perf')"; 
+													require ("mysql.php");
+										?>			
+										<div class="mensajesrecibidos">		
+										<?php	
+										while($f=mysqli_fetch_array($consulta)){
+																				echo '<div class="aviso"></br>'.$f['nombre'].' ';
+																				echo $f['apellido'].'</br></div>';
+																				echo '<div class="aviso">'.$f['mensaje'].'</div>';													
+																				}
+										mysqli_close($conexion);
+													
+										?> 
+										</div> 
+										<div class="escribir">		  
+												<form method="post" action="envio-msj.php" name="busqueda">
+												<textarea id="mensaje" name="mensaje" rows="3" cols="65" maxlength="300"></textarea>
+												<input type="hidden" id="receptor" name="receptor" value="<?php echo $perf;?>"/>
+												<input type="submit" id="botonsend" name="enviar" value="Enviar"/></form>							
+										</div>
+										<?php
+											break;	
+											case '2':
+												echo "<div class='aviso'><br/>Solo los usuarios registrados pueden enviar o recibir mensajes a este perfil!<br/>
+												Registrate o inicia sesion!<br/><br/></div>";
+												echo "<form action='../index.php'>
+    											<input type=submit value='Volver al Inicio' name='logon' id='botonback'>
+												</form>";
+											break;
+
+										}
+
+									}
+									//usuario anonimo y privacidad que eligio el perfil que visita = 5
+							else{	
+							
+							echo "<div class='aviso'><br/>Solo los usuarios registrados tienen mensajes! Registrate o inicia sesion!<br/><br/></div>";
+							echo "<form action='../index.php'>
+    						<input type=submit value='Volver al Inicio' name='logon' id='botonback'>
+							</form>";
+								}
+							
+						}
+					?>
+					</div>
+
+
+  		</div>
+
+</body>
+   			
+
+</body>
+</html>

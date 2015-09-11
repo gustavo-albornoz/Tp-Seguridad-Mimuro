@@ -1,0 +1,594 @@
+
+/*INDEX*/
+
+body {background-color: #fafafa;
+background-image:url("../img/fondo3.jpg");
+background-position: center center;
+background-repeat: no-repeat;
+background-attachment: fixed;
+background-size: cover;}
+
+#contenedor{float: left;
+		   width: 100%;
+		   height: 500px;}
+
+#login {width: 350px; 
+			height: 350px;
+			float: left;
+			margin-top: 135px;
+			border-radius: 10px;
+			border:solid;
+			border-color: #edeeee;
+			border-width: 2px;
+			background-color: #fff;
+			margin-left: 50px;
+			margin-right: 10px;
+			padding-left: 40px;}
+
+h1 {font-family: 'Corbel'; 
+	font-size: 24px;
+	color: #2890B0;
+	padding-left: 0px;
+	margin-top: 40px; }
+
+#ingreso{font-family: 'Corbel';
+		color:#4b4f54;
+		width:100px;
+		display: inline;
+		font-weight: 20px;}
+
+#aceptar{background-color: #66bd2b;
+		 border-color:#66bd2b;
+		 border-width: 1px;
+		 width:300px;
+		 line-height: 29px;
+		 font-family:'Corbel'; 
+		 color:#fff; 
+		 font-size:15px;
+		 border-radius:3px;
+		 border-style: solid;
+		 font-weight: bold;}
+
+#aceptar:hover{background-color: #388B01;}
+
+#registro {width: 350px; 
+			height: 450px;
+			margin-top: 135px;
+			padding-left: 40px;
+			border-radius: 10px;
+			border: solid;
+			border-width: 2px; 
+			border-color: #edeeee;
+			float: left;
+			margin-left: 20px;
+			margin-right: 30px;
+			background-color: #fff;
+			}
+
+#registro2 {width: 800px; 
+			height: 250px;
+			margin-top: 20px;
+			padding-left: 100px;
+			padding-top: 10px;
+			border-radius: 10px;
+			border: solid;
+			border-width: 2px; 
+			border-color: #edeeee;
+			float: left;
+			margin-left: 170px;
+			margin-right: 30px;
+			background-color: #fff;
+			}
+
+#registro2b{margin-top: 20px;
+			padding-top: 10px;
+			border-radius: 10px;
+			border: solid;
+			border-width: 2px; 
+			border-color: #edeeee;
+			float: left;
+			margin-right: 30px;
+			background-color: #fff;}			
+
+#anonimo {width: 350px; 
+			height: 350px;
+			margin-top: 135px;
+			border-radius: 10px;
+			border:solid;
+			border-color: #edeeee;
+			border-width: 2px; 
+			float: left;
+			margin-left:1px;
+			padding-left: 40px;
+			background-color: #fff;
+			}
+
+#container {
+  		width: 1200px;  /* Ancho del contenedor */
+ 		height: 420px;
+ 		margin-top: 135px;
+ 		border-radius: 10px;
+		border:solid;
+		border-color: #edeeee;
+		border-width: 2px; 
+		margin-right: 50px;
+		margin-left:50px;
+		background-color: #fff;}
+ 
+
+		/*-----------MENU---------*/
+		
+	.dropdown{
+		height:50px;
+		width:960px;}
+
+/*--DROPDOWN--*/
+
+ul.dropdown,
+ul.dropdown li,
+ul.dropdown ul {
+ list-style: none;
+ margin: 0;
+ padding: 0;
+ height: 50px;
+}
+
+ul.dropdown {
+ position: relative;
+ z-index: 597;
+ float: left;
+ height: 50px;}
+
+ul.dropdown li {
+ float: left;
+ min-height: 1px;
+ line-height: 1.3em;
+ vertical-align: middle;
+ height: 50px;
+}
+
+ul.dropdown li.hover,
+ul.dropdown li:hover {
+ position: relative;
+ z-index: 599;
+ cursor: default;
+ height: 50px;}
+
+ul.dropdown ul {
+ visibility: hidden;
+ position: absolute;
+ top: 100%;
+ left: 0;
+ width: 100%;
+ z-index: 598;
+ height: 50px;
+ }
+
+ul.dropdown ul li {
+ float: none;
+ height: 50px;
+}
+
+ul.dropdown ul ul {
+ top: 1px;
+ left: 99%;
+ height: 50px;
+}
+
+ul.dropdown li:hover > ul {
+ visibility: visible;
+ height: 50px;
+}
+
+/*--DEFAULT--*/
+
+/* -- Base drop-down styling -- */
+
+ul.dropdown {
+ font: normal 12px 'Corbel',
+ text-transform: uppercase;
+ height: 50px;
+}
+
+	ul.dropdown li {
+	 padding: 7px 0;
+	 background-color: #E5E5E5;
+	 color: #2890B0;
+	 line-height: normal;
+	 height: 50px;
+	}
+
+	ul.dropdown a:link,
+	ul.dropdown a:visited { color: #2890B0; text-decoration: none; font-family: 'Corbel';font-size: 24px;}
+	ul.dropdown a:hover { color: #fff; text-decoration: none; height: 35px; }
+	ul.dropdown a:active { color: #2890B0; }
+
+	/* -- level mark -- */
+
+	ul.dropdown ul {
+	 width: 170px;
+	 background-color: #2890B0;
+	 font-family: 'Corbel';
+	 color: #fff;
+	 font-size: 11px;
+	 text-transform: none;
+	 filter: alpha(opacity=90);
+	 -moz-opacity: .9;
+	 KhtmlOpacity: .9;
+	 opacity: .9;
+	}
+
+		ul.dropdown ul li {
+		 background-color: transparent;
+		 color: #000;
+		 filter: none;
+		}
+
+		ul.dropdown ul li.hover,
+		ul.dropdown ul li:hover {
+		 background-color: transparent;
+		}
+
+		ul.dropdown ul a:link,
+		ul.dropdown ul a:visited { color: #fff; }
+		ul.dropdown ul a:hover { color: #fff; text-decoration: none; }
+		ul.dropdown ul a:active { color: #fff; }
+
+
+/* -- Supporting class `dir` -- */
+
+ul.dropdown *.dir {
+ padding-right: 100px;
+ background-image: none;
+ background-position: 100% 50%;
+ background-repeat: no-repeat;
+}
+
+/*--DEFAULT ADVANCED--*/
+
+/* -- Base style extension -- */
+
+ul.dropdown li a {
+ display: block;
+ padding: 7px 50px;
+}
+
+
+/* -- Base style override -- */
+
+ul.dropdown li {
+ padding: 0;
+}
+
+
+/* -- Base style reinitiate: post-override activities -- */
+
+ul.dropdown li.dir {
+ padding: 7px 20px 7px 14px;
+}
+
+ul.dropdown ul li.dir {
+ padding-right: 15px;
+}
+
+
+/* -- Custom -- */
+
+ul.dropdown ul a {
+ padding: 4px 5px 4px 14px;
+ width: 151px; /* Especially for IE */
+}
+
+ul.dropdown ul a:hover {
+ background-color: #2890B0;
+}
+
+
+/* -- Drop-down open -- */
+
+ul.dropdown li:hover > a.dir {
+ background-color: #939393;
+ color: #fff;
+ font-family: 'Corbel';
+ font-size: 24px;
+}
+
+ul.dropdown ul li:hover > a.dir {
+ background-color: #76b900;
+ color: #fff;
+ font-family: 'Corbel';
+}
+
+/*--FIN MENU--*/
+
+
+#home {width: 1200px;
+				height: 300px;
+				float: left;
+				}
+
+#search {width: 450px;
+		height: 150px;
+		margin-left: 100px;
+		margin-top: 150px;
+		float: left;
+		}
+
+#busqueda {width: 300px;
+	height: 50px;
+	float: left;
+	padding-right: 20px;
+}	
+
+#lupa{width: 70px;
+	height: 70px;
+	float: left;
+	padding-right: 10px;
+	 }		
+
+.lineavertical2 {border-left: 1px solid #ccc; 
+			 height: 300px;
+			 width: 1px;
+			margin-left: 600px;
+			margin-top: 20px;
+			position: absolute;}  
+
+
+/*Perfil*/
+
+#perfilmostrar {
+				width: 550px;
+				height: 300px;
+				float: left;}
+
+.imagen {padding-top: 25px;
+		padding-left: 10px;
+		margin-left: 100px;
+		margin-top: 60px;
+		border-radius: 10px;
+		border: solid;
+		border-width: 2px; 
+		border-color: #edeeee;
+		width: 130px;
+		height: 120px;
+		float: left;}
+
+#infoperfil{border-radius: 10px;
+		border: solid;
+		border-width: 2px; 
+		border-color: #edeeee;
+			width: 200px;
+			height: 150px;
+			float: left;
+			margin-right: 20px;
+			margin-left: 50px;
+			margin-top: 60px;}
+
+p {text-align: center;
+	padding: 2px;}				
+
+#botonperfil{float: right;
+			margin-top: 50px;
+			margin-right: 100px;
+		 background-color: #66bd2b;
+		 border-color:#66bd2b;
+		 border-width: 1px;
+		 width:300px;
+		 height: 30px;
+		 line-height: 29px;
+		 font-family:'Corbel'; 
+		 color:#fff; 
+		 font-size:20px;
+		 border-radius:3px;
+		 border-style: solid;
+		 font-weight: bold;
+		}
+
+#botonperfil:hover{background-color: #388B01;}
+#botonperfil2:hover{background-color: #388B01;}
+
+#botonperfil2 {float: right;
+			margin-top: 10px;
+			margin-right: 100px;
+		 background-color: #66bd2b;
+		 border-color:#66bd2b;
+		 border-width: 1px;
+		 width:300px;
+		 height: 30px;
+		 line-height: 29px;
+		 font-family:'Corbel'; 
+		 color:#fff; 
+		 font-size:20px;
+		 border-radius:3px;
+		 border-style: solid;
+		 font-weight: bold;}
+
+
+.lineavertical {border-left: 1px solid #ccc; 
+			 height: 300px;
+			 width: 1px;
+			 margin-left: 600px;
+			 margin-top: 80px;
+			 position: absolute;} 
+
+#mensajes{ width: 550px;
+		   height: 300px;
+		   float: right;
+		   margin-top: 30px;
+		   margin-right: 20px;
+		   border-radius: 10px;
+		   border: solid;
+		   border-width: 2px; 
+		   border-color: #edeeee;}
+
+#resultados{width:550px;
+		   height: 300px;
+		   float: right;
+			margin-top: 30px;
+			margin-right: 20px;
+			border-radius: 10px;
+			border: solid;
+			border-width: 2px; 
+			border-color: #edeeee;}		
+
+#resultados2{width:550px;
+		   height: 300px;
+		   float: left;
+			margin-top: 30px;
+			margin-right: 20px;
+			border-radius: 10px;
+			border: solid;
+			border-width: 2px; 
+			border-color: #edeeee;}		
+
+
+#mensajestitulo{border: solid;
+				width: 100%;
+				height: 40px;
+				text-align: center;
+				padding-top: 4px;
+				font-family: 'Corbel'; 
+				font-size: 25px;
+				color: #2890B0;
+				background-color: #E5E5E5;
+				border-radius: 10px;
+				border: solid;
+				border-width: 2px; 
+				border-color: #edeeee;}	
+
+#botonperfilguardar{float: right;
+			margin-top: 50px;
+			margin-right: 100px;
+		 	background-color: #66bd2b;
+		 	border-color:#66bd2b;
+		 	border-width: 1px;
+		 	width:300px;
+		 	height: 30px;
+		 	line-height: 29px;
+		 	font-family:'Corbel'; 
+		 	color:#fff; 
+		 	font-size:20px;
+		 	border-radius:3px;
+		 	border-style: solid;
+		 	font-weight: bold;}
+
+#botonperfilguardar:hover{background-color: #388B01;}			 	
+
+#opciones {
+	height: 200px;
+	line-height: 30px;
+	font-family: 'Corbel';
+	padding-left: 10px;
+	padding-top: 10px;
+	font-size: 15px;}
+
+#botonconf {float: right;
+			margin-top: 25px;
+			margin-right: 100px;
+		 	background-color: #66bd2b;
+		 	border-color:#66bd2b;
+		 	border-width: 1px;
+		 	width:300px;
+		 	height: 30px;
+		 	line-height: 29px;
+		 	font-family:'Corbel'; 
+		 	color:#fff; 
+		 	font-size:20px;
+		 	border-radius:3px;
+		 	border-style: solid;
+		 	font-weight: bold;}	
+
+#botonconf:hover{background-color: #388B01;}		 			 							
+
+
+.bienvenidos {
+ color: #fff;
+ background-color: #66bd2b;
+ border-color: #2e6da4;
+ width: 150px;
+ float: right;
+ margin-top: 10px;
+ margin-right: 20px;
+ text-align: center;
+ font-family: 'Corbel';
+ border-radius: 10px;
+ font-weight: bold;
+}
+
+.aviso{font-family: 'Corbel';
+text-align: center;
+font-size: 15px;}
+
+#botonback{float: right;
+			margin-top: 50px;
+			margin-right: 100px;
+		 	background-color: #66bd2b;
+		 	border-color:#66bd2b;
+		 	border-width: 1px;
+		 	width:300px;
+		 	height: 30px;
+		 	line-height: 29px;
+		 	font-family:'Corbel'; 
+		 	color:#fff; 
+		 	font-size:20px;
+		 	border-radius:3px;
+		 	border-style: solid;
+		 	font-weight: bold;}
+
+#botonback:hover{background-color: #388B01;}
+#botonsend:hover{background-color: #388B01;}
+
+.escribir{
+height: 120px;
+margin-top: 10px;
+}
+
+
+#botonsend{float: right;
+			margin-right: 100px;
+		 	background-color: #66bd2b;
+		 	border-color:#66bd2b;
+		 	border-width: 1px;
+		 	width:300px;
+		 	height: 30px;
+		 	line-height: 29px;
+		 	font-family:'Corbel'; 
+		 	color:#fff; 
+		 	font-size:20px;
+		 	border-radius:3px;
+		 	border-style: solid;
+		 	font-weight: bold;
+		 	}
+
+.mensajesrecibidos{height: 140px;
+	overflow-y: scroll;}	
+
+#homeadmin{overflow-y: scroll;
+		   overflow-x: hidden;
+			width: 1200px;
+			height: 370px;
+			float: left;}
+
+
+table {font-family: "Corbel";
+    	font-size: 14px;   
+     	margin-left: 140px;
+        width: 900px; 
+     	text-align: left;   
+      	border-collapse: collapse; }
+
+th {font-size: 13px;   
+  font-weight: normal;  
+     padding: 8px;
+     background: #b9c9fe;
+    border-top: 4px solid #aabcfe;
+     border-bottom: 1px solid #fff; 
+     color: #039; }
+
+td {padding: 8px;    
+ 	background: #e8edff;   
+   border-bottom: 1px solid #fff;
+   color: #669;   
+   border-top: 1px solid transparent; }
+
+

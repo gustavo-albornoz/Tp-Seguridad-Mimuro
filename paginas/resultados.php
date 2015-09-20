@@ -5,11 +5,17 @@ error_reporting(0);
 <!DOCTYPE html>
 <html>
 <head>
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 	<link rel="stylesheet" type="text/css" href="../css/estilo2.css"/>
 	<script type="text/javascript" src="js/codigo.js"/></script>
 	<title>Home</title>
 </head>
 <body>
+<div class="header">
+
+						<div class="mimuro">MiMuro</div>
+
+					</div>
 		<div id="container">
 
 					<ul class="dropdown"><!--Menu horizontal-->
@@ -81,9 +87,15 @@ error_reporting(0);
   					</div>
 
   		</div>
+  		</div>
+  		<div class="footer">
+	  		<div class="pie">
+	  		Universidad Nacional de la Matanza - Seguridad y Calidad de Aplicaciones Web <br>
+	  		 Grupo 8 - 2015
 
-</body>
-   			
+	  		</div>
+  		</div>
+		
 
 </body>
 </html>

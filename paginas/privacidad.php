@@ -18,6 +18,7 @@ error_reporting (0);
             			      echo "document.location =('conf.php');";
 							  echo "</script>";}
 
+
 					
 						/*--Fin isset validar--*/ 
 				?>

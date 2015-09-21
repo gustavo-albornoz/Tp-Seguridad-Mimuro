@@ -15,6 +15,7 @@ error_reporting(0);
 					<ul class="dropdown"><!--Menu horizontal-->
 						<li><a href="home.php" class="dir">Home</a></li>
 						<li><a href="perfil.php" class="dir">Mi Perfil</a></li>
+						<li><a href="mensajes-privados.php" class="dir">Mensajes Privados</a></li>
 						<li><a href="conf.php" class="dir">Configuraci&oacute;n</a></li>
 						<?php
               			if($_SESSION['admin']==1){

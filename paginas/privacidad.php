@@ -22,3 +22,4 @@ error_reporting (0);
 					
 						/*--Fin isset validar--*/ 
 				?>
+				

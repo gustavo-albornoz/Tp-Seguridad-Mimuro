@@ -8,6 +8,7 @@ error_reporting(0);
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 	<link rel="stylesheet" type="text/css" href="../css/estilo2.css"/>
 	<script type="text/javascript" src="js/codigo.js"/></script>
+	<script type="text/javascript" src="../js/limit.js"></script>
 	<title>Perfil</title>
 </head>
 <body>

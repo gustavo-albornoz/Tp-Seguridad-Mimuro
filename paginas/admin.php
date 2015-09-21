@@ -124,8 +124,15 @@ $con="CALL selalta";
 								} 
 							echo '</table>';
 						?>					
+
+  						<div id="mensajestitulo">Limite de mensajes privados</div>	
+  							<form method="post" action="update-limite-msjs-privados.php" style="text-align:center;font-family:Corbel">
+  								<span>Cantidad limite de mensajes privados: </span>
+  								<input type="text" name="limiteMsjsPrivados" id="limiteMsjsPrivados" size="2">
+  								<input type="submit" value="Actualizar">
+  							</form>
 						</div>
-  					
+  						
 				
   		</div>
 

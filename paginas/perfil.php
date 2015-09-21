@@ -7,6 +7,7 @@ error_reporting(0);
 <head>
 	<link rel="stylesheet" type="text/css" href="../css/estilo2.css"/>
 	<script type="text/javascript" src="js/codigo.js"/></script>
+	<script type="text/javascript" src="../js/limit.js"></script>
 	<title>Perfil</title>
 </head>
 <body>
@@ -139,7 +140,9 @@ error_reporting(0);
 										</div> 
 										<div class="escribir">		  
 												<form method="post" action="envio-msj.php" name="busqueda">
-												<textarea id="mensaje" name="mensaje" rows="3" cols="65" maxlength="300"></textarea>
+												<textarea id="mensaje" name="mensaje" placeholder="Escriba su mensaje aqu&iacute;. Maximo 200 caracteres" rows="3" cols="60" onkeypress="return limita(this,event,200)" 
+                                                onkeyup="cuenta(this,event,200,'contador')"></textarea>
+                                                <span id="contador"></span>
 												<input type="hidden" id="receptor" name="receptor" value="<?php echo $perf;?>"/>
 												<input type="submit" id="botonsend" name="enviar" value="Enviar"/></form>							
 										</div>
@@ -174,7 +177,9 @@ error_reporting(0);
 										</div> 
 										<div class="escribir">		  
 												<form method="post" action="envio-msj.php" name="busqueda">
-												<textarea id="mensaje" name="mensaje" rows="3" cols="65" maxlength="300"></textarea>
+												<textarea id="mensaje" name="mensaje" placeholder="Escriba su mensaje aqu&iacute;. Maximo 200 caracteres" rows="3" cols="60" onkeypress="return limita(this,event,200)" 
+                                                onkeyup="cuenta(this,event,200,'contador')"></textarea>
+                                                <span id="contador"></span>
 												<input type="hidden" id="receptor" name="receptor" value="<?php echo $perf;?>"/>
 												<input type="submit" id="botonsend" name="enviar" value="Enviar"/></form>							
 										</div>
@@ -220,9 +225,11 @@ error_reporting(0);
 										</div> 
 										<div class="escribir">		  
 												<form method="post" action="envio-msj.php" name="busqueda">
-												<textarea id="mensaje" name="mensaje" rows="3" cols="65" maxlength="300"></textarea>
+												<textarea id="mensaje" name="mensaje" placeholder="Escriba su mensaje aqu&iacute;. Maximo 200 caracteres" rows="3" cols="60" onkeypress="return limita(this,event,200)" 
+                                                onkeyup="cuenta(this,event,200,'contador')"></textarea>
+                                                <span id="contador"></span>
 												<input type="hidden" id="receptor" name="receptor" value="<?php echo $perf;?>"/>
-												<input type="submit" id="botonsend" name="enviar" value="Enviar"/></form>							
+												<input type="submit" id="botonsend" name="enviar" value="Enviar"/></form>								
 										</div>
 
 										<?php
@@ -250,9 +257,11 @@ error_reporting(0);
 										</div> 
 										<div class="escribir">		  
 												<form method="post" action="envio-msj.php" name="busqueda">
-												<textarea id="mensaje" name="mensaje" rows="3" cols="65" maxlength="300"></textarea>
-												<input type="hidden" id="receptor" name="receptor" value="<?php echo $id;?>"/>
-												<input type="submit" id="botonsend" name="enviar" value="Enviar"/></form>							
+												<textarea id="mensaje" name="mensaje" placeholder="Escriba su mensaje aqu&iacute;. Maximo 200 caracteres" rows="3" cols="60" onkeypress="return limita(this,event,200)" 
+                                                onkeyup="cuenta(this,event,200,'contador')"></textarea>
+                                                <span id="contador"></span>
+												<input type="hidden" id="receptor" name="receptor" value="<?php echo $perf;?>"/>
+												<input type="submit" id="botonsend" name="enviar" value="Enviar"/></form>								
 										</div>
 								<?php
 								}	
@@ -310,9 +319,11 @@ error_reporting(0);
 										</div> 
 										<div class="escribir">		  
 												<form method="post" action="envio-msj.php" name="busqueda">
-												<textarea id="mensaje" name="mensaje" rows="3" cols="65" maxlength="300"></textarea>
+												<textarea id="mensaje" name="mensaje" placeholder="Escriba su mensaje aqu&iacute;. Maximo 200 caracteres" rows="3" cols="60" onkeypress="return limita(this,event,200)" 
+                                                onkeyup="cuenta(this,event,200,'contador')"></textarea>
+                                                <span id="contador"></span>
 												<input type="hidden" id="receptor" name="receptor" value="<?php echo $perf;?>"/>
-												<input type="submit" id="botonsend" name="enviar" value="Enviar"/></form>							
+												<input type="submit" id="botonsend" name="enviar" value="Enviar"/></form>								
 										</div>
 										<?php
 											break;	
